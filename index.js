@@ -12,7 +12,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/crazy-cards-fe/build/index.html"));
 });
 
-const userReg = ["hello this must work"];
+const userReg = [""];
 
 app.post("/usercards", (req, res) => {
   const userdetail = {
