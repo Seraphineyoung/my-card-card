@@ -2,20 +2,19 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-const apiRoutes = require("./routes");
-const API_ROOT_PATH = "/";
 
 app.use(express.json());
 app.use(cors());
 
-app.use(API_ROOT_PATH, apiRoutes);
-
-app.get("*", (req, res, next) => {
-  if (req.url.startsWith(API_ROOT_PATH)) {
-    return next();
-  }
-  res.sendFile(path.join(__dirname, "public/index.html"));
-});
+// const apiRoutes = require("./routes");
+// const API_ROOT_PATH = "/";
+// app.use(API_ROOT_PATH, apiRoutes);
+// app.get("*", (req, res, next) => {
+//   if (req.url.startsWith(API_ROOT_PATH)) {
+//     return next();
+//   }
+//   res.sendFile(path.join(__dirname, "public/index.html"));
+// });
 
 app.use(express.static(path.join(__dirname, "crazy-cards-fe/build")));
 
