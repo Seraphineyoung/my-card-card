@@ -5,19 +5,19 @@ const path = require("path");
 app.use(express.json());
 app.use(cors());
 
-const API_ROOT_PATH = "/api";
-const apiRoutes = require("./routes");
-app.use(API_ROOT_PATH, apiRoutes);
+// const API_ROOT_PATH = "/api";
+// const apiRoutes = require("./routes");
+// app.use(API_ROOT_PATH, apiRoutes);
 
-app.get("*", (req, res, next) => {
-  if (req.url.startsWith(API_ROOT_PATH)) {
-    return next();
-  }
-  res.sendFile(path.join(__dirname, "public/index.html"));
-});
+// app.get("*", (req, res, next) => {
+//   if (req.url.startsWith(API_ROOT_PATH)) {
+//     return next();
+//   }
+//   res.sendFile(path.join(__dirname, "public/index.html"));
+// });
 
 app.use(express.static(path.join(__dirname, "crazy-cards-fe/build")));
-// Anything that doesn't match the above, send back index.html
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/crazy-cards-fe/build/index.html"));
 });
